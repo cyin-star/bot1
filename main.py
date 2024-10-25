@@ -46,16 +46,15 @@ async def on_message(message):
             await message.channel.send('ERROR')
 
 
-    if message.content.startswith('$ban'):
+     if message.content.startswith('$ban'):
         member = message.author
         target_role = discord.utils.get(member.guild.roles, name=target_role_name)
         if target_role not in member.roles:
-            await message.channel.send(f'{member.mention} does not have the required role to use this command.')
+            await message.channel.send(f'{member.mention} does not have the required role to use this command!')
             return
         m = message.content.split(' ')
         ip = m[1]
-        reason = m[2]
-        payload = {'ip': ip, 'reason':reason}
+        payload = {'ip': ip}
         url = "https://meeatchicken.pythonanywhere.com/idk"
         headers = {
             'Content-Type': 'application/json'
@@ -67,7 +66,7 @@ async def on_message(message):
             await message.channel.send(f'{response.text}')
         else:
             print(f"Request failed with status code: {response.status_code}")
-            await message.channel.send('ERROR')
+            await message.channel.send('ERROR j')
 
 
 try:
