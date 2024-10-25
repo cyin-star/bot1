@@ -27,7 +27,7 @@ async def on_message(message):
         member = message.author
         target_role = discord.utils.get(member.guild.roles, name=target_role_name)
         if target_role not in member.roles:
-            await message.channel.send(f'{member.mention} does not have the required role to use this command.')
+            await message.channel.send(f'{member.mention} does not have the required role to use this command!')
             return
         m = message.content.split(' ')
         ip = m[1]
