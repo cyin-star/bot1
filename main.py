@@ -56,7 +56,7 @@ async def on_message(message):
         ip = m[1]
         reason = m[2]
         payload = {'ip': ip, 'reason':reason}
-        url = "https://meeatchicken.pythonanywhere.com/unban/bot"
+        url = "https://meeatchicken.pythonanywhere.com/ban/bot"
         headers = {
             'Content-Type': 'application/json'
         }
