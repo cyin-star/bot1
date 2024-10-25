@@ -78,7 +78,7 @@ async def on_message(message):
             return
         ip = 'Nan'
         payload = {'ip': ip}
-        url = "https://meeatchicken.pythonanywhere.com/get-ban"
+        url = "https://meeatchicken.pythonanywhere.com/get-bans"
         headers = {
             'Content-Type': 'application/json'
         }
