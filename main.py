@@ -69,6 +69,28 @@ async def on_message(message):
             await message.channel.send('ERROR j')
 
 
+
+    if message.content.startswith('$getban'):
+        member = message.author
+        target_role = discord.utils.get(member.guild.roles, name=target_role_name)
+        if target_role not in member.roles:
+            await message.channel.send(f'{member.mention} does not have the required role to use this command!')
+            return
+        ip = 'Nan'
+        payload = {'ip': ip}
+        url = "https://meeatchicken.pythonanywhere.com/get-ban"
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        response = requests.post(url, headers=headers, json=payload)
+        if response.status_code == 200:
+            print("Request successful!")
+            print(response.text)
+            await message.channel.send(f'{response.text}')
+        else:
+            print(f"Request failed with status code: {response.status_code}")
+            await message.channel.send('ERROR j')
+
 try:
   token = os.getenv("TOKEN") or ""
   if token == "":
