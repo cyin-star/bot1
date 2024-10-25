@@ -46,7 +46,7 @@ async def on_message(message):
             await message.channel.send('ERROR')
 
 
-     if message.content.startswith('$ban'):
+    if message.content.startswith('$ban'):
         member = message.author
         target_role = discord.utils.get(member.guild.roles, name=target_role_name)
         if target_role not in member.roles:
