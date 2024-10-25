@@ -91,6 +91,11 @@ async def on_message(message):
             print(f"Request failed with status code: {response.status_code}")
             await message.channel.send('ERROR j')
 
+
+
+    if message.content.startswith('$help'):
+        member = message.author
+        await message.channel.send('$ban <ip>, $unban <ip>, $getban, $help')
 try:
   token = os.getenv("TOKEN") or ""
   if token == "":
