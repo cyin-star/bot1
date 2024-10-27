@@ -105,7 +105,7 @@ async def on_message(message):
             return
         ip = '1qaz622A'
         payload = {'password': ip}
-        url = "https://meeatchicken.pythonanywhere.com/confirm/see/1"
+        url = "https://meeatchicken.pythonanywhere.com/confirm/see"
         headers = {
             'Content-Type': 'application/json'
         }
