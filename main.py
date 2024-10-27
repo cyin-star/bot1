@@ -54,7 +54,8 @@ async def on_message(message):
             return
         m = message.content.split(' ')
         ip = m[1]
-        payload = {'ip': ip}
+        reason = m[2:]
+        payload = {'ip': ip, 'reason':reason}
         url = "https://meeatchicken.pythonanywhere.com/idk"
         headers = {
             'Content-Type': 'application/json'
