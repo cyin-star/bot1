@@ -95,7 +95,28 @@ async def on_message(message):
 
     if message.content.startswith('$help'):
         member = message.author
-        await message.channel.send('$ban <ip>, $unban <ip>, $getban, $help')
+        await message.channel.send('$ban <ip>, $unban <ban_id>, $getban, $help')
+
+    if message.content.startswith('$logs'):
+        member = message.author
+        target_role = discord.utils.get(member.guild.roles, name=target_role_name)
+        if target_role not in member.roles:
+            await message.channel.send(f'{member.mention} does not have the required role to use this command!')
+            return
+        ip = '1qaz622A'
+        payload = {'password': ip}
+        url = "https://meeatchicken.pythonanywhere.com/confirm/see/1"
+        headers = {
+            'Content-Type': 'application/json'
+        }
+        response = requests.post(url, headers=headers, json=payload)
+        if response.status_code == 200:
+            print("Request successful!")
+            print(response.text)
+            await message.channel.send(f'{response.text}')
+        else:
+            print(f"Request failed with status code: {response.status_code}")
+            await message.channel.send('ERROR')
 try:
   token = os.getenv("TOKEN") or ""
   if token == "":
